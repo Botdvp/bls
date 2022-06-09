@@ -4,7 +4,8 @@ import os
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 import pyshorteners
-bitly_token = os.getenv('BITLY_TOKEN')
+#bitly_token = 
+#38b6f0702be7bd7656ac1dab614c3598e6558344
 bot = telebot.TeleBot(os.getenv('TgBOT_TOKEN'))
 
 markup = InlineKeyboardMarkup()
@@ -25,7 +26,7 @@ def welcome_msg(message):
 @bot.message_handler(func = lambda msg: True)
 def make_short(msg):
     link = msg.text
-    shortener = pyshorteners.Shortener(api_key = bitly_token)
+    shortener = pyshorteners.Shortener(api_key = os.getenv('BITLY_TOKEN'))
     link_shortener = shortener.bitly.short(link)
     print(link_shortener)
     bot.reply_to(msg,link_shortener)

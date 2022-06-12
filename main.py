@@ -21,12 +21,7 @@ def connection():
 			'port':5743
 	}
 	conn = connect(**kwargs)
-	try:
-		conn.connect()
-	except:
-		conn.reconnect()
-	finally:
-		return conn
+	return conn
 		
 class DataBase:
 	def update_query(self, query: str, *args):

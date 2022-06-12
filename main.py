@@ -55,7 +55,7 @@ hello_text = '''Hello %s!\n\nWelcome to bitly link shortener bot 😊\n send me 
 '''
 db = DataBase()
 
-@bot.middlewere_handler(update_types=['message'])
+@bot.middleware_handler(update_types=['message'])
 def get_updates(instance, msg):
 	if isinstance(msg, CallbackQuery):
 		bot.answer_callback_query(call.id)			

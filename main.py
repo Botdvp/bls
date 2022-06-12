@@ -17,7 +17,7 @@ def connection():
 			'host':'http://containers-us-west-62.railway.app', 
 			'user': 'root',
 			'database': 'railway', 
-			'password': 'J9ZP9AFJlVt47aP4gMnI'
+			'password': 'J9ZP9AFJlVt47aP4gMnI',
 			'port':5743
 	}
 	conn = connect(**kwargs)

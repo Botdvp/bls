@@ -37,7 +37,7 @@ class DataBase:
 		conn = connection()
 		cur = conn.cursor()
 		cur.execute("SELECT user_id FROM users")
-		users_id = [j i for i in cur.fetchall() for j in i]
+		users_id = [j for i in cur.fetchall() for j in i]
 		if user_id in users_id:
 			return True
 		else:

@@ -1,0 +1,11 @@
+❇️ These are bots developed by our team members.
+
+▫️ @Thelangtrbot :- <b>Any language to Amharic language Translator bot. </b>
+     👨‍💻 <i>Dev:</i> @The_ep 
+
+▫️ @Translator_V2BOT :-<b> Translator bot including 11  language. </b>
+       👨‍💻 <i>Dev:</i>b@im_shamil
+
+▫️ @Learning_page_bot :- Ethiopian students' answer and question platform bot.
+
+📌 <i>Join our <a href='t.me/Ethiopians_Project'>community</a> and let's become developers together. </i>

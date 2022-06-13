@@ -49,7 +49,7 @@ class DataBase:
 def community(home=True):
 	btn = InlineKeyboardMarkup(row_width=1)
 	a = InlineKeyboardButton(text="Community", url="t.me/Ethiopians_Project")
-	b = InlineKeyboardButton(text='Bots', callback='ubots')
+	b = InlineKeyboardButton(text='Bots', callback_data='ubots')
 	c = InlineKeyboardButton(text="Back", callback_data='back')
 	if home:
 		btn.add(a,b)

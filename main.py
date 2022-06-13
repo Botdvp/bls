@@ -7,7 +7,7 @@ from telebot.util import user_link
 from time import strftime
 
 BITLY_TOKEN = os.getenv('BITLY_TOKEN')
-TOKEN = '5513649108:AAHEgZ2Ui2H8MViFSq9QcwsYzxeRkGZGd_Y'#os.getenv('TgBOT_TOKEN')
+TOKEN = os.getenv('TOKEN')
 
 apihelper.ENABLE_MIDDLEWARE = True
 bot = TeleBot(TOKEN)

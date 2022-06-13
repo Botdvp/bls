@@ -48,10 +48,13 @@ class DataBase:
 			
 def community(home=True):
 	btn = InlineKeyboardMarkup(row_width=1)
+	a = InlineKeyboardButton(text="Community", url="t.me/Ethiopians_Project")
+	b = InlineKeyboardButton(text='Bots', callback='ubots')
+	c = InlineKeyboardButton(text="Back", callback_data='back')
 	if home:
-		btn.add(InlineKeyboardButton(text="Community", url="t.me/Ethiopians_Project"), InlineKeyboardButton(text='Bots', callback='ubots'))
+		btn.add(a,b)
 	else:
-		btn.add(InlineKeyboardButton(text="Back", callback_data='back'))
+		btn.add(c)
 	return btn
 
 hello_text = '''Hello %s!\n\nWelcome to bitly link shortener bot 😊\n send me any link i will make short for you using bitly.com\n.Join our community for more.

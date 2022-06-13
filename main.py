@@ -63,7 +63,7 @@ def get_updates(instance, msg):
 def welcome_msg(message):
     user_info = message.from_user
     
-    if not db.found(msg.chat.id):
+    if not db.found(message.chat.id):
     	db.update_query("INSERT INTO users VALUES (%s, %s)", msg.chat.id, stftime("%D"))
     	
     user = user_link(user_info)

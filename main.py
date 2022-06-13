@@ -60,7 +60,7 @@ def welcome_msg(message):
     user_info = message.from_user
     
     if not db.found(message.chat.id):
-    	db.update_query("INSERT INTO users(user_id) VALUES (%s", message.chat.id)
+    	db.update_query("INSERT INTO users(user_id) VALUES (%s)", message.chat.id)
     	
     user = user_link(user_info)
     bot.send_message(message.chat.id, hello_text%user,reply_markup = community(), parse_mode='HTML')
@@ -89,4 +89,4 @@ def all_callback(call):
 		bot.edit_message_text(hello_text%user, call.message.chat.id, call.message.message_id, reply_markup=community(), parse_mode='HTML')
 
 if __name__ == '__main__':
-	bot.infinity_polling()
+	bot.infinity_polling(skip_pending=False)

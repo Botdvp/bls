@@ -14,7 +14,7 @@ bot = TeleBot(TOKEN)
 
 def connection():
 	kwargs = {
-			'host':'http://containers-us-west-62.railway.app', 
+			'host':'containers-us-west-62.railway.app', 
 			'user': 'root',
 			'database': 'railway', 
 			'password': 'J9ZP9AFJlVt47aP4gMnI',

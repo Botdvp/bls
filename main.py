@@ -9,7 +9,7 @@ from time import strftime
 BITLY_TOKEN = os.getenv('BITLY_TOKEN')
 TOKEN = os.getenv('TgBOT_TOKEN')
 
-apihelper.ENABLE_MIDDLEWERE = True
+apihelper.ENABLE_MIDDLEWARE = True
 bot = TeleBot(TOKEN)
 
 def connection():

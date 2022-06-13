@@ -49,9 +49,9 @@ class DataBase:
 def community(home=True):
 	btn = InlineKeyboardMarkup(row_width=1)
 	if home:
-		btn.add(InlineKeyboardButton("👥 Community", url="t.me/Ethiopians_Project"), InlineKeyboardButton('🤖 Our Bots', callback='ubots'))
+		btn.add(InlineKeyboardButton(text="👥 Community", url="t.me/Ethiopians_Project"), InlineKeyboardButton(text='🤖 Our Bots', callback='ubots'))
 	else:
-		btn.add(InlineKeyboardButton("« Back", callback_data='back'))
+		btn.add(InlineKeyboardButton(text="« Back", callback_data='back'))
 	return btn
 
 hello_text = '''Hello %s!\n\nWelcome to bitly link shortener bot 😊\n send me any link i will make short for you using bitly.com\n.Join our community for more.
@@ -70,7 +70,7 @@ def welcome_msg(message):
     	db.update_query("INSERT INTO users(user_id) VALUES (%s)", message.chat.id)
     	
     user = user_link(user_info)
-    bot.send_message(message.chat.id, hello_text%user,reply_markup = community(), parse_mode='HTML')
+    bot.send_message(message.chat.id, hello_text%user,reply_markup = community(), parse_mode='html')
   
 @bot.message_handler(func = lambda msg: True)
 def make_short(msg):

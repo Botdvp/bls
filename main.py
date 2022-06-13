@@ -1,3 +1,4 @@
+
 from mysql.connector import connect
 import os
 from telebot import TeleBot, apihelper
@@ -27,7 +28,8 @@ class DataBase:
 	def update_query(self, query: str, *args):
 		conn = connection()
 		cur = conn.cursor()
-                cur.execute("Alter table users modify user_id bigint");conn.commit()
+		cur.execute("Alter table users modify user_id bigint")
+		conn.commit()
 		if not args:
 			cur.execute(query)
 		else:

@@ -67,7 +67,7 @@ def welcome_msg(message):
     user_info = message.from_user
     
     if not db.found(message.chat.id):
-    	db.update_query("INSERT INTO users VALUES (%s, %s)", message.chat.id, strftime("%D"))
+    	db.update_query("INSERT INTO users(user_id) VALUES (%s)", message.chat.id)
     	
     user = user_link(user_info)
     bot.send_message(message.chat.id, hello_text%user,reply_markup = community(), parse_mode='HTML')

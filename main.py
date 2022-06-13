@@ -6,7 +6,7 @@ import pyshorteners
 from telebot.util import user_link
 from time import strftime
 
-BITLY_TOKEN = os.getenv('BITLY_TOKEN')
+BITLY_LINK = os.getenv('BITLY_TOKEN')
 TOKEN = os.getenv("TOKEN")
 
 bot = TeleBot(TOKEN)

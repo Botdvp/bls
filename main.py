@@ -90,7 +90,7 @@ def all_callback(call):
 	
 	if call.data == 'ubots':
 		with open("devs.txt", 'r') as file:
-			bot.edit_message_text(file.read(), call.message.chat.id, call.message.message_id, reply_markup=community(False), parse_mode="HTML", disable_web_page_preview=True))
+			bot.edit_message_text(file.read(), call.message.chat.id, call.message.message_id, reply_markup=community(False), parse_mode="HTML", disable_web_page_preview=True)
 			file.close()
 			
 	elif call.data == 'back':

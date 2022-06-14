@@ -6,11 +6,11 @@ import pyshorteners
 from telebot.util import user_link
 from time import strftime
 
-BITLY_LINK = os.getenv('BITLY_TOKEN')
+BITLY_TOKEN = os.getenv('BITLY_TOKEN')
 TOKEN = os.getenv("TOKEN")
 
 bot = TeleBot(TOKEN)
-
+BOT = bot.get_me()
 def connection():
 	kwargs = {
 			'host':'containers-us-west-62.railway.app', 
@@ -64,7 +64,7 @@ def welcome_msg(message):
     	
     user = user_link(user_info)
     bot.send_message(message.chat.id, hello_text%user,reply_markup = community(), parse_mode='HTML')
-  
+
 @bot.message_handler(func = lambda msg: True)
 def make_short(msg):
     link = msg.text
@@ -72,7 +72,7 @@ def make_short(msg):
     try:
     	link_shortener = shortener.bitly.short(link)
     except:
-    	link_shortener = 'Error:\ndue to the link is in correct.'
+    	link_shortener = 'Error:\ndue to the link is incorrect.'
     bot.reply_to(msg, link_shortener)
 
 @bot.callback_query_handler(lambda call: True)
@@ -82,11 +82,19 @@ def all_callback(call):
 	
 	if call.data == 'ubots':
 		with open("devs.txt", 'r') as file:
-			bot.edit_message_text(file.read(), call.message.chat.id, call.message.message_id, reply_markup=community(False), parse_mode="HTML", disable_web_page_preview=True)
+			bot.edit_message_text(file.read(), call.message.chat.id, call.message.message_id, reply_markup=community(False), parse_mode="HTML")
 			file.close()
 			
 	elif call.data == 'back':
 		bot.edit_message_text(hello_text%user, call.message.chat.id, call.message.message_id, reply_markup=community(), parse_mode='HTML')
 
+@bot.message_handler(commands=["users"])
+def show_members(msg):
+	conn = connection()
+	cur = conn.cursor()
+	cur.execute("SELECT user_id FROM users")
+	ls = [i for j in cur.fetchall() for i in j]
+	bot.send_message(msg.chat.id, f"👤 <i>Now {BOT.first_name} has <u>{len(ls)}</u> users.\n🔆 Thank you for using {BOT.first_name}!! </i>", parse_mode="HTML")
+
 if __name__ == '__main__':
-	bot.infinity_polling(skip_pending=False)
+	bot.infinity_polling()

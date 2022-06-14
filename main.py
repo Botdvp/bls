@@ -65,10 +65,18 @@ def welcome_msg(message):
     user = user_link(user_info)
     bot.send_message(message.chat.id, hello_text%user,reply_markup = community(), parse_mode='HTML')
 
+@bot.message_handler(commands=["users"])
+def show_members(msg):
+	conn = connection()
+	cur = conn.cursor()
+	cur.execute("SELECT user_id FROM users")
+	ls = [i for j in cur.fetchall() for i in j]
+	bot.send_message(msg.chat.id, f"👤 <i>Now {BOT.first_name} has <u>{len(ls)}</u> users.\n🔆 Thank you for using {BOT.first_name}!! </i>", parse_mode="HTML")
+
 @bot.message_handler(func = lambda msg: True)
 def make_short(msg):
     link = msg.text
-    shortener = pyshorteners.Shortener(api_key = BITLY_LINK)
+    shortener = pyshorteners.Shortener(api_key = BITLY_TOKEN)
     try:
     	link_shortener = shortener.bitly.short(link)
     except:
@@ -82,19 +90,11 @@ def all_callback(call):
 	
 	if call.data == 'ubots':
 		with open("devs.txt", 'r') as file:
-			bot.edit_message_text(file.read(), call.message.chat.id, call.message.message_id, reply_markup=community(False), parse_mode="HTML")
+			bot.edit_message_text(file.read(), call.message.chat.id, call.message.message_id, reply_markup=community(False), parse_mode="HTML", disable_web_page_preview=True))
 			file.close()
 			
 	elif call.data == 'back':
 		bot.edit_message_text(hello_text%user, call.message.chat.id, call.message.message_id, reply_markup=community(), parse_mode='HTML')
-
-@bot.message_handler(commands=["users"])
-def show_members(msg):
-	conn = connection()
-	cur = conn.cursor()
-	cur.execute("SELECT user_id FROM users")
-	ls = [i for j in cur.fetchall() for i in j]
-	bot.send_message(msg.chat.id, f"👤 <i>Now {BOT.first_name} has <u>{len(ls)}</u> users.\n🔆 Thank you for using {BOT.first_name}!! </i>", parse_mode="HTML")
 
 if __name__ == '__main__':
 	bot.infinity_polling()
